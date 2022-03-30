@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d74513592047b46bbeb3c2ced57023, type: 3}
+  m_Name: Swordman Characteristics
+  m_EditorClassIdentifier: 
+  RotationSpeed: 60
+  MovementSpeed: 20
+  RunSpeedMultiplier: 1.1
+  MaximumHealth: 130
+  AttackRange:
+    Start: 0
+    End: 2
+  AttackSpeedSeconds: 2.2
+  PhysicalDamageResistPercent: 60
+  MagicDamageResistPercent: 0
+  BlockChainsPercent: 5
+  EvasionChainsPercent: 0
+  CritChainsPercent: 0
+  HealMultiplier: 0
+  ReceiveHealMultiplier: 0
+  CritDamageMultiplier: 0
+  Damage:
+    Start: 19
+    End: 25
+  Class: 1
+  DamageType: 0
