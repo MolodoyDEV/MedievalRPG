@@ -2,18 +2,24 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.Management.BuildingSystem
 {
+    [DisallowMultipleComponent]
     [SelectionBase]
-    [CreateAssetMenu(fileName = "BuildingTerritory", menuName = "Utils")]
     public class BuildingTerritory : MonoBehaviour
     {
-        [SerializeField] private float maxHeightDifference = 1f;
-        private float hightPointsAdditionalY = 0f;
+        [SerializeField] private int territoryGroup;
+        [SerializeField] private float maxHeightDifference = 3f;
+        [SerializeField] private bool ignoreCollision;
+        private float hightPointsAdditionalY = 1f;
         private Transform myTransform;
         private LayerMask collisionLayerMask;
         private LayerMask heightLayerMask;
+        private Transform[] heightPoints = null;
         RaycastHit hit;
+
+        public int TerritoryGroup { get => territoryGroup;}
+        public float MaxHeightDifference { get => maxHeightDifference; }
 
         private void Awake()
         {
@@ -22,31 +28,63 @@ namespace Assets.Scripts.BuildingSystem
             heightLayerMask.value = 0;
             heightLayerMask.value ^= 1 << GameConstants.Layer_GroundNumber;
             myTransform = transform;
+
+            CreateHeightPoints();
+        }
+
+        private void OnDisable()
+        {
+            for (int i = 0; i < heightPoints.Length; i++)
+            {
+                Destroy(heightPoints[i].gameObject);
+            }
+
+            heightPoints = null;
+        }
+
+        private void CreateHeightPoints()
+        {
+            heightPoints = new Transform[4];
+            Vector3[] heightPointsPositions = GetBottomBorderPoints();
+
+            for (int i = 0; i < heightPoints.Length; i++)
+            {
+                Transform newHeightPoint = new GameObject("HeightPoint" + (i + 1)).transform;
+                newHeightPoint.gameObject.layer = GameConstants.Layer_TransparentFXNumber;
+                newHeightPoint.position = heightPointsPositions[i];
+                newHeightPoint.parent = myTransform;
+                heightPoints[i] = newHeightPoint;
+            }
         }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(GetLeftBottomPoint(), 0.5f);
-            Gizmos.DrawSphere(new Vector3(GetLeftBottomPoint().x, GetLeftBottomPoint().y, GetLeftBottomPoint().z + transform.lossyScale.z), 0.5f);
-            Gizmos.DrawSphere(new Vector3(GetLeftBottomPoint().x + transform.lossyScale.x, GetLeftBottomPoint().y, GetLeftBottomPoint().z + transform.lossyScale.z), 0.5f);
-            Gizmos.DrawSphere(new Vector3(GetLeftBottomPoint().x + transform.lossyScale.x, GetLeftBottomPoint().y, GetLeftBottomPoint().z), 0.5f);
-            //Gizmos.DrawSphere(new Vector3(matrix[0, 0], matrix[0, 1], matrix[0, 2]), 1f);
-            //Gizmos.DrawSphere(new Vector3(matrix[1, 0], matrix[1, 1], matrix[1, 2]), 1f);
-            //Gizmos.DrawSphere(new Vector3(matrix[2, 0], matrix[2, 1], matrix[2, 2]), 1f);
-            //Gizmos.DrawSphere(new Vector3(matrix[3, 0], matrix[3, 1], matrix[3, 2]), 1f);
+            //if (heightPoints != null)
+            //{
+            //    Gizmos.color = Color.red;
+            //    Gizmos.DrawSphere(heightPoints[0].position, 0.5f);
+            //    Gizmos.DrawSphere(heightPoints[1].position, 0.5f);
+            //    Gizmos.DrawSphere(heightPoints[2].position, 0.5f);
+            //    Gizmos.DrawSphere(heightPoints[3].position, 0.5f);
+            //}
 
-            Gizmos.color = new Color(Color.gray.r, Color.gray.g, Color.gray.b, 0.1f);
-            Gizmos.DrawCube(transform.position, transform.lossyScale);
+
+            Gizmos.color = new Color(Color.blue.r, Color.blue.g, Color.blue.b, 1f);
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
         }
 #endif
 
         public bool HasCollisionWithTerritory()
         {
+            if (ignoreCollision)
+            {
+                return false;
+            }
+
             if (Physics.CheckBox(GetCenter(), myTransform.lossyScale / 2, myTransform.rotation, collisionLayerMask))
             {
-                Debug.LogWarning("Collision box");
                 return true;
             }
             else
@@ -55,15 +93,27 @@ namespace Assets.Scripts.BuildingSystem
             }
         }
 
-        public bool HasCriticalHeightDifference()
+        //public bool HasCriticalHeightDifference()
+        //{
+        //    if(maxHeightDifference == Mathf.Infinity)
+        //    {
+        //        return false;
+        //    }
+
+        //    Vector2 minMaxHeight = GetMinAndMaxHeiht();
+
+        //    return ((minMaxHeight.y - minMaxHeight.x) > MaxHeightDifference) || (minMaxHeight.y == Mathf.Infinity && minMaxHeight.x == Mathf.Infinity);
+        //}
+
+        public Vector2 GetMinAndMaxHeiht()
         {
             float minHeight = Mathf.Infinity;
             float maxHeight = 0;
 
-            foreach (Vector3 point in GetBottomBorderPoints())
+            foreach (Transform point in heightPoints)
             {
-                Debug.DrawLine(point, new Vector3(point.x, -10000f, point.z), Color.red);
-                Ray ray = new Ray(point, new Vector3(point.x, -10000f, point.z));
+                Debug.DrawLine(point.position, new Vector3(point.position.x, -10000f, point.position.z), Color.red);
+                Ray ray = new Ray(point.position, new Vector3(point.position.x, -10000f, point.position.z));
 
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, heightLayerMask))
                 {
@@ -83,13 +133,10 @@ namespace Assets.Scripts.BuildingSystem
                 }
             }
 
-            Debug.LogWarning("Max " + maxHeight);
-            Debug.LogWarning("Min " + minHeight);
-            Debug.LogWarning("======");
-            return ((maxHeight - minHeight) > maxHeightDifference) || (maxHeight == Mathf.Infinity && minHeight == Mathf.Infinity);
+            return new Vector2(minHeight, maxHeight);
         }
 
-        public Vector3[] GetBottomBorderPoints()
+        private Vector3[] GetBottomBorderPoints()
         {
             return new Vector3[] {
                 GetLeftBottomPoint(),
@@ -99,21 +146,21 @@ namespace Assets.Scripts.BuildingSystem
                 };
         }
 
-        public Vector3 GetCenter()
+        private Vector3 GetCenter()
         {
             return transform.position;
         }
 
-        public Vector3 GetLeftBottomPoint()
+        private Vector3 GetLeftBottomPoint()
         {
-            Vector3 vector3 = GetCenter() - transform.lossyScale / 2;
+            Vector3 vector3 = (GetCenter() - transform.lossyScale / 2);
             vector3.y += hightPointsAdditionalY;
             return vector3;
         }
 
-        public Vector3 GetRightTopPoint()
+        private Vector3 GetRightTopPoint()
         {
-            Vector3 vector3 = GetCenter() + transform.lossyScale / 2;
+            Vector3 vector3 = (GetCenter() + transform.lossyScale / 2);
             vector3.y += hightPointsAdditionalY;
             return vector3;
         }

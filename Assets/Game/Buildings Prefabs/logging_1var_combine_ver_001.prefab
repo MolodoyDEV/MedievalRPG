@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3128265569768086835}
   - component: {fileID: 8704865809762220732}
   - component: {fileID: 4268854282493442761}
-  - component: {fileID: 1394498937344516468}
   m_Layer: 0
   m_Name: logging_1var_combine_ver_001
   m_TagString: Untagged
@@ -145,25 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9671ff52538af3d47b234d8daca72d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowToBuildMaterial: {fileID: 2100000, guid: 1ef09dc5c215953428f5192f6aab9c3b, type: 2}
-  prohibitedToBuildMaterial: {fileID: 2100000, guid: 224a701d50cc4324da4122675b204882, type: 2}
   isBuilded: 0
---- !u!208 &1394498937344516468
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857741942875139898}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1001 &3758282089299654480
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.BuildingSystem;
+﻿using Assets.Scripts.Management.BuildingSystem;
 using Molodoy.Characters.Player.States;
 using Molodoy.CoreComponents;
 using Molodoy.CoreComponents.StateMachine;

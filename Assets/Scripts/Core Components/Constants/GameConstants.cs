@@ -25,10 +25,13 @@
         public const float MaximumGameSpeed = 10f;
 
         public const int Layer_DefaultNumber = 0;
+        public const int Layer_TransparentFXNumber = 1;
         public const int Layer_GroundNumber = 3;
-        public const int Layer_InstantiatedNumber = 8;
-        public const int Layer_PlayerNumber = 7;
         public const int Layer_AiNumber = 6;
+        public const int Layer_PlayerNumber = 7;
+        public const int Layer_InstantiatedNumber = 8;
         public const int Layer_InvisibleNumber = 9;
+        public const int Layer_NoSelfFXNumber = 10;
+
     }
 }

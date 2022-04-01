@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{C5C88CA0-A845-FD5F-11B2-7CA4DADA78C6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -212,6 +213,8 @@
     <Compile Include="Assets\Scripts\Interfaces\Hud.cs" />
     <Compile Include="Assets\Scripts\Extensions\CustomQueue.cs" />
     <Compile Include="Assets\Scripts\Player\States\PlayerBuildingState.cs" />
+    <Compile Include="Assets\Scripts\Management\BuildingSystem\BuildingPermitVisualizer.cs" />
+    <Compile Include="Assets\Scripts\Management\BuildingSystem\BuildingPermitChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Other\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -887,13 +890,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{F8A8B315-18D8-AF11-DFAE-0E60CA05554D}</Project>
-      <Name>NavMeshComponentsEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{904EB122-E495-C3BF-56B7-6388DB8D0E11}</Project>
+      <Project>{7AB0D09F-001D-6731-74B5-A43759D0FB99}</Project>
       <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{F659B4E6-0D2D-847E-00C0-6BF1A09D15BD}</Project>
+      <Name>NavMeshComponentsEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

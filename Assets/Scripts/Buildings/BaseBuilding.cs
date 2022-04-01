@@ -1,11 +1,10 @@
-﻿using Assets.Scripts.BuildingSystem;
-using Assets.Scripts.Villagers;
+﻿using Assets.Scripts.Villagers;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Buildings
 {
-    [RequireComponent(typeof(BuildableObject))]
+    //[RequireComponent(typeof(BuildableObject))]
     [RequireComponent(typeof(Collider))]
     public class BaseBuilding : MonoBehaviour
     {

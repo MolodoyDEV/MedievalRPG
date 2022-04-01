@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 1558262205578921478}
   - component: {fileID: 2454414161577101731}
   - component: {fileID: 426474055674969449}
-  - component: {fileID: 7778038952178267353}
   - component: {fileID: 4643150006968459779}
+  - component: {fileID: 7778038952178267353}
   - component: {fileID: 7833754733091627119}
+  - component: {fileID: 7961183598416906749}
+  - component: {fileID: 5763588989180511534}
   - component: {fileID: 4587155942463422358}
-  - component: {fileID: 1177933248441978289}
   m_Layer: 0
   m_Name: ferm_ver_002
   m_TagString: Untagged
@@ -93,20 +94,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7778038952178267353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2228120270982519996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05748bc9e04349e42a889d8421d09ea3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  propertiesSO: {fileID: 11400000, guid: 01d3b2ecf7369da41a312d69140e5490, type: 2}
-  villagersInBuilding: 
 --- !u!64 &4643150006968459779
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -121,6 +108,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4077673473210223748, guid: 1c27fc87c7c9a0648ac0a63070137c6f, type: 3}
+--- !u!114 &7778038952178267353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228120270982519996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05748bc9e04349e42a889d8421d09ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propertiesSO: {fileID: 11400000, guid: 01d3b2ecf7369da41a312d69140e5490, type: 2}
+  villagersInBuilding: 
 --- !u!114 &7833754733091627119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,9 +134,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9671ff52538af3d47b234d8daca72d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBuilded: 0
+--- !u!114 &7961183598416906749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228120270982519996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a070a69522c876343b4d1a55d7527a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5763588989180511534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228120270982519996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3dcd21cc85ef7e4298ba80e1eabb572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   allowToBuildMaterial: {fileID: 2100000, guid: 1ef09dc5c215953428f5192f6aab9c3b, type: 2}
   prohibitedToBuildMaterial: {fileID: 2100000, guid: 224a701d50cc4324da4122675b204882, type: 2}
-  isBuilded: 0
 --- !u!114 &4587155942463422358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,22 +177,6 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
---- !u!208 &1177933248441978289
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2228120270982519996}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1001 &1924835472146030657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5601653
+      value: 1.6137102
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalScale.z
@@ -201,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.65636
+      value: 0.62959
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalPosition.z

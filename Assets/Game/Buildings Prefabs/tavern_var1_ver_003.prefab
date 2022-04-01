@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3001073851989910171}
   - component: {fileID: 1192497148282223918}
   - component: {fileID: 7447594862262185700}
-  - component: {fileID: 5878651573713410168}
   m_Layer: 0
   m_Name: tavern_var1_ver_003
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300150658153476713}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
@@ -79,8 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9671ff52538af3d47b234d8daca72d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowToBuildMaterial: {fileID: 2100000, guid: 1ef09dc5c215953428f5192f6aab9c3b, type: 2}
-  prohibitedToBuildMaterial: {fileID: 2100000, guid: 224a701d50cc4324da4122675b204882, type: 2}
   isBuilded: 0
 --- !u!114 &7447594862262185700
 MonoBehaviour:
@@ -96,22 +93,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   propertiesSO: {fileID: 11400000, guid: edc74cb9d43e0c24588c74469d262005, type: 2}
   villagersInBuilding: 
---- !u!208 &5878651573713410168
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300150658153476713}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &3777807901463470221
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,27 +205,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.967116
+      value: 1.8796113
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0756311
+      value: 1.1690625
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.927334
+      value: 2.798297
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00573
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08058
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00482
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2897738542439836622, guid: 4af8abec45e573c4b84c2af0c29d2107, type: 3}
       propertyPath: m_LocalRotation.w

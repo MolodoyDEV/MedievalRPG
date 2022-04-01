@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.Management.BuildingSystem
 {
+    [DisallowMultipleComponent]
     public class BuildingSystem : MonoBehaviour
     {
         [SerializeField] private UIBuildingQuickPanel buildingQuickPanel;

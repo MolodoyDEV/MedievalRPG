@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.BuildingSystem;
+﻿using Assets.Scripts.Management.BuildingSystem;
 using Molodoy.CoreComponents;
 using Molodoy.CoreComponents.StateMachine;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace Molodoy.Characters.Player.States
         private RaycastHit hit;
         private float maxBuldingDistance = 25f;
         private LayerMask layerMask = new LayerMask();
-        private float buildingRotationSpeed = 100;
+        private float buildingRotationSpeed = 180;
 
         public override void Update()
         {

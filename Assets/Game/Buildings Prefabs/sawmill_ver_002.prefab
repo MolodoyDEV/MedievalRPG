@@ -905,7 +905,6 @@ GameObject:
   - component: {fileID: 8631736554732791720}
   - component: {fileID: 1054169002101173142}
   - component: {fileID: 6677726094327257180}
-  - component: {fileID: 2823003890917912111}
   m_Layer: 0
   m_Name: sawmill_ver_002
   m_TagString: Untagged
@@ -973,8 +972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9671ff52538af3d47b234d8daca72d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowToBuildMaterial: {fileID: 2100000, guid: 1ef09dc5c215953428f5192f6aab9c3b, type: 2}
-  prohibitedToBuildMaterial: {fileID: 2100000, guid: 224a701d50cc4324da4122675b204882, type: 2}
   isBuilded: 0
 --- !u!114 &1054169002101173142
 MonoBehaviour:
@@ -1006,22 +1003,6 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
---- !u!208 &2823003890917912111
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5946490655771540267}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &6107855477379658043
 GameObject:
   m_ObjectHideFlags: 0

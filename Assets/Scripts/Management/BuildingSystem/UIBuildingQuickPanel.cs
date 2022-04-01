@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.Management.BuildingSystem
 {
     public class UIBuildingQuickPanel : MonoBehaviour
     {

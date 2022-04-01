@@ -1,120 +1,87 @@
 ﻿using Assets.Scripts.Buildings;
 using Assets.Scripts.Management.Registrators;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.Management.BuildingSystem
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(BaseBuilding))]
-    [RequireComponent(typeof(Collider))]
-    [RequireComponent(typeof(NavMeshObstacle))]
+    [RequireComponent(typeof(BuildingPermitChecker))]
+    [RequireComponent(typeof(BuildingPermitVisualizer))]
     public class BuildableObject : MonoBehaviour
     {
-        [SerializeField] private Material allowToBuildMaterial;
-        [SerializeField] private Material prohibitedToBuildMaterial;
         [SerializeField] private bool isBuilded;
-        private BuildingTerritory buildingTerritory;
-        private Material[] defaultMaterials;
-        private Material[] prohibitedToBuildMaterials;
-        private Material[] allowToBuildMaterials;
         private BaseBuilding baseBuilding;
-        private Collider myColider;
-        private Renderer myRenderer;
+        private BuildingPermitChecker buildingPermitChecker;
+        private BuildingPermitVisualizer buildingPermitVisualizer;
         private bool previousAllowToBuildState;
-        private NavMeshObstacle myObstacle;
+        private Vector3 previousPosition;
+        private Quaternion previousRotation;
+        private Transform myTransform;
 
-        public bool IsAllowToBuild { get => CheckAllowToBuild(); }
+        public bool IsAllowToBuild { get => buildingPermitChecker.CheckAllowToBuild(); }
 
         private void Awake()
         {
-            myObstacle = GetComponent<NavMeshObstacle>();
-            myObstacle.shape = NavMeshObstacleShape.Box;
-            myObstacle.carving = true;
-            buildingTerritory = GetComponentInChildren<BuildingTerritory>();
+            myTransform = transform;
+            buildingPermitChecker = GetComponent<BuildingPermitChecker>();
+            buildingPermitVisualizer = GetComponent<BuildingPermitVisualizer>();
             baseBuilding = GetComponent<BaseBuilding>();
-            myColider = GetComponent<Collider>();
-            myRenderer = GetComponentInChildren<Renderer>();
-            defaultMaterials = myRenderer.materials;
 
+            if(isBuilded == false)
+            {
+                buildingPermitChecker.Initialize();
+                buildingPermitVisualizer.Initialize();
+            }
+        }
+
+        private void Start()
+        {
             if (isBuilded)
             {
                 OnBuilded();
             }
             else
             {
-                myObstacle.enabled = false;
-                myColider.enabled = false;
-                prohibitedToBuildMaterials = new Material[defaultMaterials.Length];
-                allowToBuildMaterials = new Material[defaultMaterials.Length];
-
-                for (int i = 0; i < defaultMaterials.Length; i++)
+                if (IsAllowToBuild)
                 {
-                    prohibitedToBuildMaterials[i] = prohibitedToBuildMaterial;
-                    allowToBuildMaterials[i] = allowToBuildMaterial;
+                    buildingPermitVisualizer.OnAllowToBuld();
                 }
-            }
-        }
-
-        private void Start()
-        {
-            if (IsAllowToBuild)
-            {
-                OnAllowToBuld();
-            }
-            else
-            {
-                OnProhibitedToBuld();
+                else
+                {
+                    buildingPermitVisualizer.OnProhibitedToBuld();
+                }
             }
         }
 
         private void FixedUpdate()
         {
-            if (previousAllowToBuildState == false && IsAllowToBuild)
+            if (myTransform.position != previousPosition || myTransform.rotation != previousRotation)
             {
-                previousAllowToBuildState = true;
-                OnAllowToBuld();
-            }
-            else if (previousAllowToBuildState && IsAllowToBuild == false)
-            {
-                previousAllowToBuildState = false;
-                OnProhibitedToBuld();
-            }
-        }
+                previousPosition = myTransform.position;
+                previousRotation = myTransform.rotation;
 
-        private bool CheckAllowToBuild()
-        {
-            return buildingTerritory.HasCollisionWithTerritory() == false && buildingTerritory.HasCriticalHeightDifference() == false;
+                if (previousAllowToBuildState == false && IsAllowToBuild)
+                {
+                    previousAllowToBuildState = true;
+                    buildingPermitVisualizer.OnAllowToBuld();
+                }
+                else if (previousAllowToBuildState && IsAllowToBuild == false)
+                {
+                    previousAllowToBuildState = false;
+                    buildingPermitVisualizer.OnProhibitedToBuld();
+                }
+            }
         }
 
         public void OnBuilded()
         {
             isBuilded = true;
-            myColider.enabled = true;
-            myObstacle.enabled = true;
-            myRenderer.materials = defaultMaterials;
-            defaultMaterials = null;
-            allowToBuildMaterials = null;
-            allowToBuildMaterial = null;
-            prohibitedToBuildMaterials = null;
-            prohibitedToBuildMaterial = null;
             BuildingsRegistrator.RegisterBuilding(baseBuilding);
-            buildingTerritory.enabled = false;
+            buildingPermitVisualizer.enabled = false;
+            buildingPermitChecker.enabled = false;
             enabled = false;
-        }
-
-        private void OnAllowToBuld()
-        {
-            myRenderer.materials = allowToBuildMaterials;
-        }
-
-        private void OnProhibitedToBuld()
-        {
-            myRenderer.materials = prohibitedToBuildMaterials;
-        }
-
-        public void OnDestroyed()
-        {
-
         }
     }
 }
