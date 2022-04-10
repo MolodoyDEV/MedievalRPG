@@ -15,4 +15,5 @@ MonoBehaviour:
   allowedVillagersGrades: 00000000
   buildingPreview: {fileID: 21300000, guid: c3431caff2a38194faf7689871f88752, type: 3}
   title: Sawmill
+  description: Sawmill
   maximumVillagers: 2

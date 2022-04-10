@@ -15,4 +15,5 @@ MonoBehaviour:
   allowedVillagersGrades: 0000000001000000
   buildingPreview: {fileID: 21300000, guid: 318d8969d8af44d40975a30fb5883e8d, type: 3}
   title: Warehouse
+  description: Warehouse with some stuff
   maximumVillagers: 2

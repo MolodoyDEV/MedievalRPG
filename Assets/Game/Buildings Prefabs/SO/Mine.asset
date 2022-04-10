@@ -15,4 +15,5 @@ MonoBehaviour:
   allowedVillagersGrades: 00000000
   buildingPreview: {fileID: 21300000, guid: 25ec30506020b8847b7515b1c3ecbd40, type: 3}
   title: Mine
+  description: Mine for mining
   maximumVillagers: 2

@@ -12,11 +12,13 @@ namespace Assets.Scripts.Buildings
         [SerializeField] private List<VillagerGrade> allowedVillagersGrades = new List<VillagerGrade>();
         [SerializeField] private Sprite buildingPreview;
         [SerializeField] private string title;
+        [SerializeField] private string description;
         [SerializeField] private int maximumVillagers;
 
         public List<VillagerGrade> AllowedVillagersClasses { get => allowedVillagersGrades; }
         public Sprite BuildingPreview { get => buildingPreview; }
-        public string Title { get => title; }
+        public string Name { get => title; }
+        public string Description { get => description; }
         public int MaximumVillagers { get => maximumVillagers; }
     }
 }

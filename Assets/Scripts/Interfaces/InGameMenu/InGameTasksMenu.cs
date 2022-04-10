@@ -1,4 +1,5 @@
-﻿using Molodoy.CoreComponents;
+﻿using Assets.Scripts.UI;
+using Molodoy.CoreComponents;
 using QuantumTek.QuantumQuest;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 namespace Molodoy.Interfaces
 {
     [DisallowMultipleComponent]
-    public class InGameTasksMenu : MonoBehaviour
+    public class InGameTasksMenu : MonoBehaviour, IWindow
     {
         [SerializeField] private GameObject challengeEndElements;
         [SerializeField] private GameObject defaultElements;
@@ -132,6 +133,11 @@ namespace Molodoy.Interfaces
         public void CloseWindow()
         {
             gameObject.SetActive(false);
+        }
+
+        public void OpenWindow()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

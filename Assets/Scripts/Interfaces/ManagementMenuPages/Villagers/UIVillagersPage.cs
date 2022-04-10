@@ -26,7 +26,7 @@ namespace Assets.Scripts.Interfaces.ManagementMenuPages
 
                 if (villager.InBuldingID != -1)
                 {
-                    inBuildingTitle = "\tIn " + BuildingsRegistrator.GetBuildingById(villager.InBuldingID).Properties.Title;
+                    inBuildingTitle = "\tIn " + BuildingsRegistrator.GetBuildingById(villager.InBuldingID).Properties.Name;
                 }
 
                 BaseInterfaceTile tile = Instantiate(villagerTilePrefab, villagerTilesParent, false).GetComponent<BaseInterfaceTile>();

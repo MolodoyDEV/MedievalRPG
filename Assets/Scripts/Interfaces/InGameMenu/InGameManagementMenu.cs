@@ -1,10 +1,11 @@
-﻿using Molodoy.CoreComponents;
+﻿using Assets.Scripts.UI;
+using Molodoy.CoreComponents;
 using UnityEngine;
 
 namespace Assets.Scripts.Interfaces.InGameMenu
 {
     [DisallowMultipleComponent]
-    public class InGameManagementMenu : MonoBehaviour
+    public class InGameManagementMenu : MonoBehaviour, IWindow
     {
         [SerializeField] private GameObject defaultElements;
 
@@ -28,6 +29,11 @@ namespace Assets.Scripts.Interfaces.InGameMenu
         public void CloseWindow()
         {
             gameObject.SetActive(false);
+        }
+
+        public void OpenWindow()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

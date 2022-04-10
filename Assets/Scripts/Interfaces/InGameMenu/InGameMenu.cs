@@ -1,3 +1,4 @@
+using Assets.Scripts.UI;
 using Molodoy.CoreComponents;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ using UnityStandardAssets.Utility;
 namespace Molodoy.Interfaces
 {
     [DisallowMultipleComponent]
-    public class InGameMenu : MonoBehaviour
+    public class InGameMenu : MonoBehaviour, IWindow
     {
         [SerializeField] private Text mouseSpeedValue;
         [SerializeField] private Slider mouseSensitivitySlider;
@@ -100,6 +101,11 @@ namespace Molodoy.Interfaces
         {
             //BinarySaveLoader.LoadGameAtStart(true);
             SceneLoader.ReloadCurrentScene();
+        }
+
+        public void OpenWindow()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

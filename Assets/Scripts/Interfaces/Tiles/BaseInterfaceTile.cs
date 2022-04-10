@@ -13,7 +13,7 @@ namespace Molodoy.Interfaces
     {
         protected Image background;
         [SerializeField] protected Text tileName;
-        [SerializeField] protected Image icon;
+        [SerializeField] private Image icon;
         [ReadOnlyInspector] [SerializeField] private int entityID;
         [SerializeField]
         protected ColorBlock colors = new ColorBlock()
@@ -25,9 +25,10 @@ namespace Molodoy.Interfaces
             disabledColor = new Color(Color.gray.r, Color.gray.g, Color.gray.b, 0.5f)
         };
 
-        public UnityEvent<string> OnLeftClick = new UnityEvent<string>();
-
+        public UnityEvent<int> OnLeftClick = new UnityEvent<int>();
         public int EntityID { get => entityID; protected set => entityID = value; }
+        public Image Icon { get => icon;}
+
 
         protected virtual void Awake()
         {
@@ -43,7 +44,10 @@ namespace Molodoy.Interfaces
 
         public virtual void OnPointerDown(PointerEventData eventData)
         {
-
+            if(eventData.button == PointerEventData.InputButton.Left)
+            {
+                OnLeftClick?.Invoke(EntityID);
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)

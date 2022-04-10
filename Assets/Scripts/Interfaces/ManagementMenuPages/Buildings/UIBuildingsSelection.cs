@@ -49,7 +49,7 @@ namespace Assets.Scripts.Interfaces.ManagementMenuPages
             foreach (BaseBuilding building in buildings)
             {
                 BuildingTile tile = Instantiate(buildingTilePrefab, buildingTilesParent, false).GetComponent<BuildingTile>();
-                tile.SetValues($"{building.Properties.Title}\nAllowed for: {building.Properties.AllowedVillagersClasses.ListToString(", ")}",
+                tile.SetValues($"{building.Properties.Name}\nAllowed for: {building.Properties.AllowedVillagersClasses.ListToString(", ")}",
                     building.Properties.BuildingPreview, building.GetHashCode());
                 buildingsTiles.Add(tile);
             }

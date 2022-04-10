@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e3f572ff0d121294e882b8afa55e2fd4
+guid: 5fd608c3dce802f49a331e2387723e19
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: bar
+    second: {fileID: 2100000, guid: 62299d8adfb07ef4797d25584de808e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: board
     second: {fileID: 2100000, guid: 75483c73137077945a53a3f5cfc4ac3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: board1
+    second: {fileID: 2100000, guid: 105eeb18cf9251147bc2690c4a303369, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bochka
+    second: {fileID: 2100000, guid: ea87bc24958425a49bb8f30aa9005ee1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brick1
+    second: {fileID: 2100000, guid: 155e56c339acaac43989872b44aad70c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door
+    second: {fileID: 2100000, guid: 6dc32cb2aaf3856439bd1250def80922, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -27,13 +52,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert5
-    second: {fileID: 2100000, guid: c857b47d63864e645b35d81b2868eb4d, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: bd738b96a5ef5264ea7b12cac74d343f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: table4
     second: {fileID: 2100000, guid: 9621ec13f7c6c9a47b1cebb8400e8ec2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: torch
+    second: {fileID: 2100000, guid: 60a4bcfbffd7a8847b3142cce1dc7a3a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

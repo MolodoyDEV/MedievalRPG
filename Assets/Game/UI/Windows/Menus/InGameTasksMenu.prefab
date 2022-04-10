@@ -479,7 +479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &242246005107560760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -556,10 +556,8 @@ MonoBehaviour:
   questTilesParent: {fileID: 2128761976526398414}
   tasksTilesParent: {fileID: 8139155939291943274}
   questHandler: {fileID: 0}
-  questTilePrefab: {fileID: 6365122673010735607, guid: a71c4e7e3d71827499000bc880f5a441,
-    type: 3}
-  taskTilePrefab: {fileID: 6365122673010735607, guid: a6970104f610f2c44ac81444efeee4e0,
-    type: 3}
+  questTilePrefab: {fileID: 6365122673010735607, guid: a71c4e7e3d71827499000bc880f5a441, type: 3}
+  taskTilePrefab: {fileID: 6365122673010735607, guid: a6970104f610f2c44ac81444efeee4e0, type: 3}
   questDescription: {fileID: 5946777684036617722}
 --- !u!1 &242246005435667300
 GameObject:

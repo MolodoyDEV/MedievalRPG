@@ -1910,6 +1910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingsSelection: {fileID: 2738480208799244568}
+  availableVillagers: []
 --- !u!1 &5162457637832548138
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,7 +3236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5273232462614689038
 RectTransform:
   m_ObjectHideFlags: 0

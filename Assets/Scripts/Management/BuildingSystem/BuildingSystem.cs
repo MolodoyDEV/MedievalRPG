@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.Buildings;
+using Assets.Scripts.Interfaces;
+using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,25 +10,30 @@ namespace Assets.Scripts.Management.BuildingSystem
     [DisallowMultipleComponent]
     public class BuildingSystem : MonoBehaviour
     {
-        [SerializeField] private UIBuildingQuickPanel buildingQuickPanel;
-        //[HideInInspector] public static UnityEvent<BaseBuilding> NewBuildingAvailable = new UnityEvent<BaseBuilding>();
-        //[HideInInspector] public static UnityEvent<BaseBuilding> BuildingUnAvailable = new UnityEvent<BaseBuilding>();
-        //[HideInInspector] public static UnityEvent<BaseBuilding> BuildingSelected = new UnityEvent<BaseBuilding>();
-        //[HideInInspector] public static UnityEvent BuildingDeSelected = new UnityEvent();
-        [SerializeField] private List<BaseBuilding> availableBuildings = new List<BaseBuilding>(10);
+        [SerializeField] private List<BaseBuilding> availableBuildings = new List<BaseBuilding>();
+        private UIBuildingSystemMenu buildingSystemMenu;
         private BuildableObject buildingGhost;
+        private static BuildingSystem instance;
 
         public bool IsBuildingSelected { get => buildingGhost != null; }
+        public static List<BaseBuilding> AvailableBuildings { get => instance.availableBuildings; }
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         private void Start()
         {
-            foreach (BaseBuilding building in availableBuildings)
-            {
-                buildingQuickPanel.OnBuldingAdded(building);
-                //NewBuildingAvailable?.Invoke(building);
-            }
+            buildingSystemMenu = UIWindowsManager.GetWindow<UIBuildingSystemMenu>();
+            //buildingSystemMenu = FindObjectOfType<UIBuildingSystemMenu>();
 
-            OnExitBildingMode();
+            //foreach (BaseBuilding building in availableBuildings)
+            //{
+            //    buildingSystemMenu.OnBuldingAdded(building);
+            //}
+
+            //OnExitBildingMode();
         }
 
         public void AddAvailableBuilding(BaseBuilding _building)
@@ -37,64 +44,67 @@ namespace Assets.Scripts.Management.BuildingSystem
             }
 
             availableBuildings.Add(_building);
-            buildingQuickPanel.OnBuldingAdded(_building);
-            //NewBuildingAvailable?.Invoke(_building);
+            buildingSystemMenu.OnBuldingAdded(_building);
         }
 
         public void OnEnterBildingMode()
         {
-            buildingQuickPanel.gameObject.SetActive(true);
+            UIWindowsManager.CloseAllOpenedWindows();
+            UIWindowsManager.OpenWindow<UIBuildingSystemMenu>();
+            UIWindowsManager.OpenWindow<UIBuildingSystemHint>();
+            UIWindowsManager.SetWindowsOnTop<UIBuildingSystemMenu>();
         }
 
         public void OnExitBildingMode()
         {
-            DeselectBuilding();
+            //DeselectBuilding();
             DestroyBuldingGhost();
-            buildingQuickPanel.gameObject.SetActive(false);
+            UIWindowsManager.CloseWindow<UIBuildingSystemMenu>();
+            UIWindowsManager.CloseWindow<UIBuildingSystemHint>();
         }
 
         public void RemoveAvailableBuilding(BaseBuilding _building)
         {
             availableBuildings.Remove(_building);
-            buildingQuickPanel.OnBuldingRemoved(_building);
-            //BuildingUnAvailable?.Invoke(_building);
+            buildingSystemMenu.OnBuldingRemoved(_building);
         }
 
-        public void SelectBulding(int number)
+        //public void SelectBulding(int number)
+        //{
+
+        //    DestroyBuldingGhost();
+
+        //    if (availableBuildings.Count >= number)
+        //    {
+        //        BaseBuilding selectedBulding = availableBuildings[number - 1];
+        //        buildingSystemMenu.OnBuildingSelected(selectedBulding);
+        //        buildingGhost = MonoBehaviour.Instantiate(selectedBulding.gameObject).GetComponent<BuildableObject>();
+        //    }
+        //    else
+        //    {
+        //        DeselectBuilding();
+        //    }
+        //}
+
+        public static void SelectBulding(BaseBuilding building)
         {
-            if (number == 0)
-            {
-                number = 10;
-            }
-
-            DestroyBuldingGhost();
-
-            if (availableBuildings.Count >= number)
-            {
-                BaseBuilding selectedBulding = availableBuildings[number - 1];
-                buildingQuickPanel.OnBuildingSelected(selectedBulding);
-                buildingGhost = Instantiate(selectedBulding.gameObject).GetComponent<BuildableObject>();
-                //BuildingSelected?.Invoke(availableBuildings[number - 1]);
-            }
-            else
-            {
-                DeselectBuilding();
-            }
+            instance.DestroyBuldingGhost();
+            instance.buildingGhost = MonoBehaviour.Instantiate(building.gameObject).GetComponent<BuildableObject>();
         }
 
         private void DestroyBuldingGhost()
         {
             if (buildingGhost)
             {
-                Destroy(buildingGhost.gameObject);
+                MonoBehaviour.Destroy(buildingGhost.gameObject);
                 buildingGhost = null;
             }
         }
 
-        private void DeselectBuilding()
-        {
-            buildingQuickPanel.DeselectAllBuldings();
-        }
+        //private void DeselectBuilding()
+        //{
+        //    buildingSystemMenu.DeselectAllTiles();
+        //}
 
         public void RotateBulding(float delta)
         {
@@ -107,13 +117,13 @@ namespace Assets.Scripts.Management.BuildingSystem
             buildingGhost.transform.position = position;
         }
 
-        public bool TryApplyBulding()
+        public bool TryPlaceBulding()
         {
             if (buildingGhost.IsAllowToBuild)
             {
-                buildingGhost.OnBuilded();
+                buildingGhost.OnUnfinishedBuildingPlaced();
                 buildingGhost = null;
-                DeselectBuilding();
+                //DeselectBuilding();
                 return true;
             }
             else
@@ -125,7 +135,8 @@ namespace Assets.Scripts.Management.BuildingSystem
         public void CancelBulding()
         {
             DestroyBuldingGhost();
-            DeselectBuilding();
+            UIWindowsManager.OpenWindow<UIBuildingSystemMenu>();
+            //DeselectBuilding();
         }
     }
 }

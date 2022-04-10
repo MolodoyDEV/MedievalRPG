@@ -134,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9671ff52538af3d47b234d8daca72d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBuilded: 0
+  isFinalyBuilded: 0
+  isPlaced: 0
 --- !u!114 &7961183598416906749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowToBuildMaterial: {fileID: 2100000, guid: 1ef09dc5c215953428f5192f6aab9c3b, type: 2}
   prohibitedToBuildMaterial: {fileID: 2100000, guid: 224a701d50cc4324da4122675b204882, type: 2}
+  unfinishedBuldingMaterial: {fileID: 2100000, guid: 95785716a6db8c94bab3ba7081079cde, type: 2}
 --- !u!114 &4587155942463422358
 MonoBehaviour:
   m_ObjectHideFlags: 0

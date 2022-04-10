@@ -15,4 +15,5 @@ MonoBehaviour:
   allowedVillagersGrades: 00000000
   buildingPreview: {fileID: 21300000, guid: d1ae4e71c826c014291ca4ff92aad748, type: 3}
   title: Logging
+  description: Logging house for Logging
   maximumVillagers: 2

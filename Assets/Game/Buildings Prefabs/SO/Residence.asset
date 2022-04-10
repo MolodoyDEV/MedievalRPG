@@ -15,4 +15,5 @@ MonoBehaviour:
   allowedVillagersGrades: 000000000100000002000000
   buildingPreview: {fileID: 21300000, guid: 9140e3d4b5a61004faa191d1aae5b77a, type: 3}
   title: Residence
+  description: Residence
   maximumVillagers: 3

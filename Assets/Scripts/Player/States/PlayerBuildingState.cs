@@ -21,22 +21,30 @@ namespace Molodoy.Characters.Player.States
 
             int numericInput = PlayerInputHandler.GetNumericInputDown();
 
-            if (numericInput != -1)
-            {
-                buildingSystem.SelectBulding(numericInput);
-            }
+            //if (numericInput != -1)
+            //{
+            //    buildingSystem.SelectBulding(numericInput);
+            //}
 
             if (Input.GetKeyDown(KeyCode.B))
             {
                 stationSwitcher.ReturnToPreviousState();
             }
-            else if (PlayerInputHandler.GetCancelInputDown())
+
+
+            if (buildingSystem.IsBuildingSelected)
             {
-                buildingSystem.CancelBulding();
-            }
-            else if (PlayerInputHandler.GetLeftMouseInputDown())
-            {
-                buildingSystem.TryApplyBulding();
+                if (PlayerInputHandler.GetCancelInputDown())
+                {
+                    buildingSystem.CancelBulding();
+                }
+                else if (PlayerInputHandler.GetLeftMouseInputDown())
+                {
+                    if (buildingSystem.TryPlaceBulding())
+                    {
+                        stationSwitcher.ReturnToPreviousState();
+                    }
+                }
             }
 
             if (buildingSystem.IsBuildingSelected)

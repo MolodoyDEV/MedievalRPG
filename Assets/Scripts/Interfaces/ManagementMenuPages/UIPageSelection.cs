@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.UI;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Molodoy.Interfaces

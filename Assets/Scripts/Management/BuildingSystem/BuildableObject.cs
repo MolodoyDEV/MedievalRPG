@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Buildings;
 using Assets.Scripts.Management.Registrators;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Management.BuildingSystem
@@ -11,11 +10,11 @@ namespace Assets.Scripts.Management.BuildingSystem
     [RequireComponent(typeof(BuildingPermitVisualizer))]
     public class BuildableObject : MonoBehaviour
     {
-        [SerializeField] private bool isBuilded;
+        [SerializeField] private bool isFullyBuilded;
+        [SerializeField] private bool isPlaced;
         private BaseBuilding baseBuilding;
         private BuildingPermitChecker buildingPermitChecker;
         private BuildingPermitVisualizer buildingPermitVisualizer;
-        private bool previousAllowToBuildState;
         private Vector3 previousPosition;
         private Quaternion previousRotation;
         private Transform myTransform;
@@ -28,29 +27,34 @@ namespace Assets.Scripts.Management.BuildingSystem
             buildingPermitChecker = GetComponent<BuildingPermitChecker>();
             buildingPermitVisualizer = GetComponent<BuildingPermitVisualizer>();
             baseBuilding = GetComponent<BaseBuilding>();
-
-            if(isBuilded == false)
-            {
-                buildingPermitChecker.Initialize();
-                buildingPermitVisualizer.Initialize();
-            }
         }
 
         private void Start()
         {
-            if (isBuilded)
+            if (isFullyBuilded == false)
             {
-                OnBuilded();
+                buildingPermitChecker.Initialize();
+                //buildingPermitVisualizer.Initialize();
+
+                if (isPlaced)
+                {
+                    OnUnfinishedBuildingPlaced();
+                }
             }
             else
             {
+                OnFullyBuilded();
+            }
+
+            if (isFullyBuilded == false)
+            {
                 if (IsAllowToBuild)
                 {
-                    buildingPermitVisualizer.OnAllowToBuld();
+                    buildingPermitVisualizer.OnAllowToBuild();
                 }
                 else
                 {
-                    buildingPermitVisualizer.OnProhibitedToBuld();
+                    buildingPermitVisualizer.OnProhibitedToBuild();
                 }
             }
         }
@@ -62,26 +66,31 @@ namespace Assets.Scripts.Management.BuildingSystem
                 previousPosition = myTransform.position;
                 previousRotation = myTransform.rotation;
 
-                if (previousAllowToBuildState == false && IsAllowToBuild)
+                if (IsAllowToBuild)
                 {
-                    previousAllowToBuildState = true;
-                    buildingPermitVisualizer.OnAllowToBuld();
+                    buildingPermitVisualizer.OnAllowToBuild();
                 }
-                else if (previousAllowToBuildState && IsAllowToBuild == false)
+                else
                 {
-                    previousAllowToBuildState = false;
-                    buildingPermitVisualizer.OnProhibitedToBuld();
+                    buildingPermitVisualizer.OnProhibitedToBuild();
                 }
             }
         }
 
-        public void OnBuilded()
+        public void OnFullyBuilded()
         {
-            isBuilded = true;
+            isFullyBuilded = true;
             BuildingsRegistrator.RegisterBuilding(baseBuilding);
+            buildingPermitVisualizer.OnFullyBuilded();
             buildingPermitVisualizer.enabled = false;
-            buildingPermitChecker.enabled = false;
             enabled = false;
+        }
+
+        public void OnUnfinishedBuildingPlaced()
+        {
+            isPlaced = true;
+            buildingPermitVisualizer.OnUnfinishedBuildingPlaced();
+            buildingPermitChecker.enabled = false;
         }
     }
 }

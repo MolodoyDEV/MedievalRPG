@@ -71,6 +71,7 @@
     <Compile Include="Assets\Other\Quantum Tek\Quantum Dialogue\Scripts\QD_DialogueHandler.cs" />
     <Compile Include="Assets\Scripts\Management\Registrators\VillagersRegistrator.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ManagementMenuPages\Buildings\UIAddVillagerDropdown.cs" />
+    <Compile Include="Assets\Scripts\Management\BuildingSystem\BuildingPermitChecker.cs" />
     <Compile Include="Assets\Other\Standard Assets\Environment\Water\Water\Scripts\PlanarReflection.cs" />
     <Compile Include="Assets\Other\Standard Assets\Utility\TimedObjectActivator.cs" />
     <Compile Include="Assets\Scripts\Extensions\Vector3Extension.cs" />
@@ -108,12 +109,12 @@
     <Compile Include="Assets\Other\Quantum Tek\Quantum Quests\Scripts\QQ_QuestDB.cs" />
     <Compile Include="Assets\Other\Standard Assets\Utility\AutoMoveAndRotate.cs" />
     <Compile Include="Assets\Scripts\Core Components\StateMachine\BaseCharacter.cs" />
-    <Compile Include="Assets\Scripts\Management\BuildingSystem\UIBuildingQuickPanel.cs" />
     <Compile Include="Assets\Scripts\Units\UnitPresenter.cs" />
     <Compile Include="Assets\Scripts\Units\States\UnitDeathState.cs" />
     <Compile Include="Assets\Scripts\Units\States\UnitDisabledState.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ManagementMenuPages\UIPageSelection.cs" />
     <Compile Include="Assets\Scripts\Villagers\UnitHealth.cs" />
+    <Compile Include="Assets\Scripts\Management\BuildingSystem\BuildingPermitVisualizer.cs" />
     <Compile Include="Assets\Scripts\Core Components\ObjectsInitializer.cs" />
     <Compile Include="Assets\Scripts\Debugging\GameHacks.cs" />
     <Compile Include="Assets\Scripts\Core Components\AlwaysLookAt.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Assets\Scripts\Extensions\RectExtension.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ManagementMenuPages\Villagers\UIVillagersPage.cs" />
     <Compile Include="Assets\Scripts\Interfaces\Tiles\TaskInterfaceTile.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\UIBuildingQuickPanel.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovementControl.cs" />
     <Compile Include="Assets\Scripts\Plugins\Extensions\ReadOnlyInspectorAttribute.cs" />
     <Compile Include="Assets\Scripts\Units\UnitController.cs" />
@@ -177,7 +179,9 @@
     <Compile Include="Assets\Other\Standard Assets\Utility\WaypointProgressTracker.cs" />
     <Compile Include="Assets\Other\Standard Assets\Utility\DragRigidbody.cs" />
     <Compile Include="Assets\Other\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\UIWindowsManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ResizeableWindow.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\UIBuildingSystemHint.cs" />
     <Compile Include="Assets\Scripts\Plugins\Extensions\InspectorButtonAttribute.cs" />
     <Compile Include="Assets\Other\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs" />
     <Compile Include="Assets\Scripts\Interfaces\InGameMenu\InGameMenu.cs" />
@@ -197,6 +201,7 @@
     <Compile Include="Assets\Other\Standard Assets\Utility\FOVKick.cs" />
     <Compile Include="Assets\Scripts\Buildings\BaseBuilding.cs" />
     <Compile Include="Assets\Scripts\Interfaces\Tiles\BuildingTile.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\UIBuildingSystemMenu.cs" />
     <Compile Include="Assets\Scripts\RTSCameraController.cs" />
     <Compile Include="Assets\Other\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
     <Compile Include="Assets\Other\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
@@ -213,8 +218,8 @@
     <Compile Include="Assets\Scripts\Interfaces\Hud.cs" />
     <Compile Include="Assets\Scripts\Extensions\CustomQueue.cs" />
     <Compile Include="Assets\Scripts\Player\States\PlayerBuildingState.cs" />
-    <Compile Include="Assets\Scripts\Management\BuildingSystem\BuildingPermitVisualizer.cs" />
-    <Compile Include="Assets\Scripts\Management\BuildingSystem\BuildingPermitChecker.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\Tiles\UITilesViewport.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\Tiles\UISimpleTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Other\TextMesh Pro\Shaders\TMPro.cginc" />

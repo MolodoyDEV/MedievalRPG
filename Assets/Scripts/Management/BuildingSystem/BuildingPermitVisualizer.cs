@@ -7,9 +7,11 @@ namespace Assets.Scripts.Management.BuildingSystem
     {
         [SerializeField] private Material allowToBuildMaterial;
         [SerializeField] private Material prohibitedToBuildMaterial;
+        [SerializeField] private Material unfinishedBuldingMaterial;
         private Material[] defaultMaterials;
         private Material[] prohibitedToBuildMaterials;
         private Material[] allowToBuildMaterials;
+        private Material[] unfinishedBuldingMaterials;
         private Collider myColider;
         private MeshRenderer myRenderer;
         //private NavMeshObstacle myObstacle;
@@ -27,43 +29,37 @@ namespace Assets.Scripts.Management.BuildingSystem
 
             defaultMaterials = myRenderer.materials;
             myColider.enabled = false;
-        }
-
-        public void Initialize()
-        {
-            Awake();
-            //myObstacle = GetComponent<NavMeshObstacle>();
-            //myObstacle.shape = NavMeshObstacleShape.Box;
-            //myObstacle.carving = true;
 
             prohibitedToBuildMaterials = new Material[defaultMaterials.Length];
             allowToBuildMaterials = new Material[defaultMaterials.Length];
+            unfinishedBuldingMaterials = new Material[defaultMaterials.Length];
 
             for (int i = 0; i < defaultMaterials.Length; i++)
             {
                 prohibitedToBuildMaterials[i] = prohibitedToBuildMaterial;
                 allowToBuildMaterials[i] = allowToBuildMaterial;
+                unfinishedBuldingMaterials[i] = unfinishedBuldingMaterial;
             }
         }
 
         private void OnDisable()
         {
             //myObstacle.enabled = true;
-            myColider.enabled = true;
-            myRenderer.materials = defaultMaterials;
             defaultMaterials = null;
             allowToBuildMaterials = null;
             allowToBuildMaterial = null;
             prohibitedToBuildMaterials = null;
             prohibitedToBuildMaterial = null;
+            unfinishedBuldingMaterial = null;
+            unfinishedBuldingMaterials = null;
         }
 
-        public void OnAllowToBuld()
+        public void OnAllowToBuild()
         {
             myRenderer.materials = allowToBuildMaterials;
         }
 
-        public void OnProhibitedToBuld()
+        public void OnProhibitedToBuild()
         {
             myRenderer.materials = prohibitedToBuildMaterials;
         }
@@ -71,6 +67,18 @@ namespace Assets.Scripts.Management.BuildingSystem
         public void OnDestroyed()
         {
 
+        }
+
+        public void OnFullyBuilded()
+        {
+            myColider.enabled = true;
+            myRenderer.materials = defaultMaterials;
+        }
+
+        public void OnUnfinishedBuildingPlaced()
+        {
+            myColider.enabled = true;
+            myRenderer.materials = unfinishedBuldingMaterials;
         }
     }
 }

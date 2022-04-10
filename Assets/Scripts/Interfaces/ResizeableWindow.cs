@@ -1,4 +1,5 @@
-﻿using Molodoy.Extensions;
+﻿using Assets.Scripts.UI;
+using Molodoy.Extensions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

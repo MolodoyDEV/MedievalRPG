@@ -15,4 +15,5 @@ MonoBehaviour:
   allowedVillagersGrades: 0000000001000000
   buildingPreview: {fileID: 21300000, guid: dcbd67db4af271a40866163184d8c89a, type: 3}
   title: Tavern
+  description: Tavern for drink some beer and eat some fish
   maximumVillagers: 4

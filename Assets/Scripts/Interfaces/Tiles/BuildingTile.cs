@@ -2,6 +2,7 @@
 using Molodoy.Extensions;
 using Molodoy.Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Interfaces.Tiles

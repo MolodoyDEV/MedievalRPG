@@ -15,4 +15,5 @@ MonoBehaviour:
   allowedVillagersGrades: 0000000001000000
   buildingPreview: {fileID: 21300000, guid: 2fd5901e44642324193b30ab21322335, type: 3}
   title: Barn
+  description: Barn
   maximumVillagers: 4

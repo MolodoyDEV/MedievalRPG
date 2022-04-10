@@ -15,4 +15,5 @@ MonoBehaviour:
   allowedVillagersGrades: 0000000001000000
   buildingPreview: {fileID: 21300000, guid: 94b13a461b64b724a90abd86540887b0, type: 3}
   title: Fisher House
+  description: Fisher House for fishing
   maximumVillagers: 1
