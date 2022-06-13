@@ -8,6 +8,7 @@ namespace Molodoy.Characters.Player.States
     public abstract class PlayerBaseState : BaseState
     {
         protected Hud hud;
+        protected PlayerRaycast playerRaycast;
 
         public override void Update()
         {
@@ -31,6 +32,7 @@ namespace Molodoy.Characters.Player.States
         {
             PlayerCore playerCore = (PlayerCore)_stationSwitcher;
             hud = playerCore.HUD;
+            playerRaycast = playerCore.PlayerRaycast;
         }
     }
 }

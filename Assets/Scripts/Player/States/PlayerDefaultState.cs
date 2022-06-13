@@ -1,4 +1,5 @@
-﻿using Molodoy.CoreComponents;
+﻿using Assets.Scripts.Environment;
+using Molodoy.CoreComponents;
 using Molodoy.CoreComponents.StateMachine;
 using UnityEngine;
 
@@ -29,6 +30,14 @@ namespace Molodoy.Characters.Player.States
             else if (Input.GetKeyDown(KeyCode.B))
             {
                 stationSwitcher.SwitchState<PlayerBuildingState>();
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                CuttableTree cuttableTree;
+                if (playerRaycast.HitedObject && playerRaycast.HitedObject.TryGetComponent(out cuttableTree))
+                {
+                    cuttableTree.CutTree();
+                }
             }
         }
 

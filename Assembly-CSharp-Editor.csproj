@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{81E7B535-4770-9210-B5BF-F2E847CD8C74}</ProjectGuid>
+    <ProjectGuid>{BA531838-48FF-4EF1-6377-8B3E5C02EB5A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -304,12 +304,6 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\Program Files (x86)\Unity\2020.3.27f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>Library\ScriptAssemblies\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-Editor-firstpass">
-      <HintPath>Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Graphs">
       <HintPath>D:\Program Files (x86)\Unity\2020.3.27f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
@@ -770,16 +764,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{C5C88CA0-A845-FD5F-11B2-7CA4DADA78C6}</Project>
+      <Project>{3FC943E8-70C7-56E6-ECD7-D5135EF28522}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{F8A8B315-18D8-AF11-DFAE-0E60CA05554D}</Project>
-      <Name>NavMeshComponentsEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{904EB122-E495-C3BF-56B7-6388DB8D0E11}</Project>
+      <Project>{7AB0D09F-001D-6731-74B5-A43759D0FB99}</Project>
       <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{F659B4E6-0D2D-847E-00C0-6BF1A09D15BD}</Project>
+      <Name>NavMeshComponentsEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

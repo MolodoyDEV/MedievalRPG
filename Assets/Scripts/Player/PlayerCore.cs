@@ -16,18 +16,20 @@ namespace Molodoy.Characters.Player
     {
         [SerializeField] private Hud hud;
         [SerializeField] private Camera playerCamera;
+        private PlayerRaycast playerRaycast;
         public Hud HUD { get => hud; }
         public CharacterController CharacterController { get; private set; }
         public static PlayerMovementControl MovementControl { get; private set; }
         public static PlayerCore instance;
         public static Camera PlayerCamera { get => instance.playerCamera; }
-
+        public PlayerRaycast PlayerRaycast { get => playerRaycast; }
 
         private void Awake()
         {
             instance = this;
             CharacterController = GetComponent<CharacterController>();
             MovementControl = GetComponent<PlayerMovementControl>();
+            playerRaycast = GetComponent<PlayerRaycast>();
 
             allStates = new List<BaseState>()
         {

@@ -8,9 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
-    <ProjectGuid>{C5C88CA0-A845-FD5F-11B2-7CA4DADA78C6}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{3FC943E8-70C7-56E6-ECD7-D5135EF28522}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -122,6 +121,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerInputHandler.cs" />
     <Compile Include="Assets\Scripts\Core Components\SceneTransition.cs" />
     <Compile Include="Assets\Scripts\Units\States\UnitIdleState.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\Tiles\UISimpleTile.cs" />
     <Compile Include="Assets\Scripts\Management\BuildingSystem\BuildableObject.cs" />
     <Compile Include="Assets\Scripts\Saves\XMLSaveLoader.cs" />
     <Compile Include="Assets\Other\Quantum Tek\Quantum Quests\Scripts\QQ_QuestHandler.cs" />
@@ -168,6 +168,7 @@
     <Compile Include="Assets\Scripts\Core Components\StaticMethods.cs" />
     <Compile Include="Assets\Scripts\Units\UnitMovementController.cs" />
     <Compile Include="Assets\Scripts\Saves\SaveLoader.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\Tiles\UITilesViewport.cs" />
     <Compile Include="Assets\Scripts\Extensions\IntExtension.cs" />
     <Compile Include="Assets\Scripts\Villagers\VillagerCore.cs" />
     <Compile Include="Assets\Scripts\Core Components\Constants\GamePropertiesConstants.cs" />
@@ -218,8 +219,10 @@
     <Compile Include="Assets\Scripts\Interfaces\Hud.cs" />
     <Compile Include="Assets\Scripts\Extensions\CustomQueue.cs" />
     <Compile Include="Assets\Scripts\Player\States\PlayerBuildingState.cs" />
-    <Compile Include="Assets\Scripts\Interfaces\Tiles\UITilesViewport.cs" />
-    <Compile Include="Assets\Scripts\Interfaces\Tiles\UISimpleTile.cs" />
+    <Compile Include="Assets\Scripts\Environment\CuttableTreeVar2.cs" />
+    <Compile Include="Assets\Scripts\Environment\CuttableTreeVar1.cs" />
+    <Compile Include="Assets\Scripts\Environment\CuttableTree.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerRaycast.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Other\TextMesh Pro\Shaders\TMPro.cginc" />
